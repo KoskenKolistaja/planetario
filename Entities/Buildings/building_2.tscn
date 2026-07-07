@@ -2,8 +2,10 @@
 
 [ext_resource type="Material" uid="uid://c8wh60mixp1l5" path="res://Entities/Buildings/BuildingMaterial.tres" id="1_2ir2g"]
 [ext_resource type="ArrayMesh" uid="uid://dnv21fgj2a51q" path="res://Assets/Models/KenneyCommercial/OBJ format/low-detail-building-b.obj" id="1_nlldc"]
+[ext_resource type="Script" uid="uid://bcb28elnc34nt" path="res://Entities/Buildings/building.gd" id="3_lokok"]
 
 [node name="Building2" type="MeshInstance3D" unique_id=1937264127]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 material_override = ExtResource("1_2ir2g")
 mesh = ExtResource("1_nlldc")
+script = ExtResource("3_lokok")

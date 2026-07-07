@@ -1,0 +1,218 @@
+[gd_scene format=3 uid="uid://dxonj6pp4gipc"]
+
+[ext_resource type="Texture2D" uid="uid://ce8mdbfo27y0q" path="res://Assets/Textures/Ambient/8k_stars_milky_way.jpg" id="1_b3ddb"]
+[ext_resource type="PackedScene" uid="uid://gqnoegygcb03" path="res://Entities/Sun/sun.tscn" id="2_nrmyc"]
+[ext_resource type="PackedScene" uid="uid://dpftk7wpju0s5" path="res://Entities/Planets/planet.tscn" id="3_nrmyc"]
+[ext_resource type="Material" uid="uid://cgy1gfeahqk35" path="res://Assets/Materials/Ice.tres" id="4_moahd"]
+[ext_resource type="Material" uid="uid://dnq53cfq3fd37" path="res://Assets/Materials/Rocky2.tres" id="5_wdhme"]
+[ext_resource type="PackedScene" uid="uid://d2horlhbu1a4h" path="res://Entities/UI/hud.tscn" id="6_qcxpe"]
+[ext_resource type="PackedScene" uid="uid://bgmqjaj3j7ptj" path="res://Entities/Player/player.tscn" id="7_iyobf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c7ngr"]
+shading_mode = 0
+albedo_texture = ExtResource("1_b3ddb")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_tik66"]
+material = SubResource("StandardMaterial3D_c7ngr")
+size = Vector2(160, 90)
+
+[sub_resource type="Environment" id="Environment_47p0u"]
+background_mode = 1
+background_color = Color(0.017732391, 0.017732391, 0.01773239, 1)
+background_energy_multiplier = 16.0
+ambient_light_color = Color(0.14767182, 0.14767179, 0.14767179, 1)
+ambient_light_energy = 3.58
+glow_enabled = true
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_b3ddb"]
+plane = Plane(1, 0, 0, 0)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_b3ddb"]
+size = Vector2(100, 1)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_yofps"]
+plane = Plane(-1, 0, 0, 0)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_nrmyc"]
+plane = Plane(0, -1, 0, 0)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_moahd"]
+
+[node name="World" type="Node3D" unique_id=550109296 groups=["world"]]
+
+[node name="Ambient" type="Node3D" parent="." unique_id=1338633237]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ambient" unique_id=1849114959]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -23)
+mesh = SubResource("PlaneMesh_tik66")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Ambient" unique_id=375638495]
+environment = SubResource("Environment_47p0u")
+
+[node name="Camera3D" type="Camera3D" parent="Ambient" unique_id=266903875]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 235)
+fov = 15.0
+
+[node name="SpaceBodies" type="Node3D" parent="." unique_id=1168736301]
+
+[node name="Sun" parent="SpaceBodies" unique_id=2110935476 instance=ExtResource("2_nrmyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40, 0, 0)
+
+[node name="Sun2" parent="SpaceBodies" unique_id=1453505283 instance=ExtResource("2_nrmyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0, 0)
+
+[node name="Sun3" parent="SpaceBodies" unique_id=411057398 instance=ExtResource("2_nrmyc")]
+size = 2.0
+
+[node name="Planet" parent="SpaceBodies" unique_id=1436331546 node_paths=PackedStringArray("orbit_point") instance=ExtResource("3_nrmyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 0)
+orbit_point = NodePath("../Sun")
+ellipticalness = 1.5
+orbit_speed = 0.3
+planet_name = "Aldwin"
+
+[node name="Planet2" parent="SpaceBodies" unique_id=1982172163 node_paths=PackedStringArray("orbit_point") instance=ExtResource("3_nrmyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 0)
+orbit_point = NodePath("../Sun")
+ellipticalness = 1.5
+orbit_speed = 0.3
+starting_angle = 60.0
+planet_material = ExtResource("4_moahd")
+controller_id = 1
+planet_name = "zx100"
+
+[node name="Planet3" parent="SpaceBodies" unique_id=1282701112 node_paths=PackedStringArray("orbit_point") instance=ExtResource("3_nrmyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
+orbit_point = NodePath("../Sun")
+ellipticalness = 1.5
+orbit_speed = 0.3
+starting_angle = 120.0
+planet_material = ExtResource("5_wdhme")
+planet_name = "Gorziak"
+
+[node name="Planet7" parent="SpaceBodies" unique_id=263593005 node_paths=PackedStringArray("orbit_point") instance=ExtResource("3_nrmyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 0)
+orbit_point = NodePath("../Sun")
+ellipticalness = 1.5
+orbit_speed = 0.3
+starting_angle = 180.0
+planet_name = "Aldwin"
+
+[node name="Planet8" parent="SpaceBodies" unique_id=2051787363 node_paths=PackedStringArray("orbit_point") instance=ExtResource("3_nrmyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 0)
+orbit_point = NodePath("../Sun")
+ellipticalness = 1.5
+orbit_speed = 0.3
+starting_angle = 240.0
+planet_material = ExtResource("4_moahd")
+controller_id = 1
+planet_name = "zx100"
+
+[node name="Planet9" parent="SpaceBodies" unique_id=1300609724 node_paths=PackedStringArray("orbit_point") instance=ExtResource("3_nrmyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
+orbit_point = NodePath("../Sun")
+ellipticalness = 1.5
+orbit_speed = 0.3
+starting_angle = 300.0
+planet_material = ExtResource("5_wdhme")
+planet_name = "Gorziak"
+
+[node name="Planet4" parent="SpaceBodies" unique_id=1293856525 node_paths=PackedStringArray("orbit_point") instance=ExtResource("3_nrmyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 0)
+orbit_point = NodePath("../Sun2")
+orbit_speed = 0.3
+clockwise = false
+planet_name = "Bendele"
+
+[node name="Planet5" parent="SpaceBodies" unique_id=1173236367 node_paths=PackedStringArray("orbit_point") instance=ExtResource("3_nrmyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 0)
+orbit_point = NodePath("../Sun2")
+orbit_speed = 0.3
+starting_angle = 120.0
+clockwise = false
+planet_material = ExtResource("4_moahd")
+controller_id = 0
+planet_name = "Genessee"
+
+[node name="Planet6" parent="SpaceBodies" unique_id=1121068815 node_paths=PackedStringArray("orbit_point") instance=ExtResource("3_nrmyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
+orbit_point = NodePath("../Sun2")
+orbit_speed = 0.3
+starting_angle = 240.0
+clockwise = false
+planet_material = ExtResource("5_wdhme")
+planet_name = "Akhtingar"
+
+[node name="HUDS" type="Control" parent="." unique_id=915259017]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Hud1" parent="HUDS" unique_id=1957944093 node_paths=PackedStringArray("player") instance=ExtResource("6_qcxpe")]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -397.0
+offset_top = -210.0
+offset_right = -23.0
+offset_bottom = 0.0
+grow_horizontal = 0
+player = NodePath("../../Players/Player")
+
+[node name="Hud2" parent="HUDS" unique_id=601741345 node_paths=PackedStringArray("player") instance=ExtResource("6_qcxpe")]
+layout_mode = 1
+offset_left = 23.0
+offset_right = 397.0
+player_id = 1
+player = NodePath("../../Players/Player2")
+
+[node name="Players" type="Node3D" parent="." unique_id=1390956144]
+
+[node name="Player" parent="Players" unique_id=1303389446 node_paths=PackedStringArray("planet", "hud") instance=ExtResource("7_iyobf")]
+planet = NodePath("../../SpaceBodies/Planet5")
+hud = NodePath("../../HUDS/Hud1")
+
+[node name="Player2" parent="Players" unique_id=1475536349 node_paths=PackedStringArray("planet", "hud") instance=ExtResource("7_iyobf")]
+player_id = 1
+planet = NodePath("../../SpaceBodies/Planet2")
+hud = NodePath("../../HUDS/Hud2")
+
+[node name="StarshipBoundaries" type="StaticBody3D" parent="." unique_id=833069083]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StarshipBoundaries" unique_id=842563651]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57, 0, 0)
+shape = SubResource("WorldBoundaryShape3D_b3ddb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StarshipBoundaries/CollisionShape3D" unique_id=627486929]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("PlaneMesh_b3ddb")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StarshipBoundaries" unique_id=1221716049]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57, 0, 0)
+shape = SubResource("WorldBoundaryShape3D_yofps")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StarshipBoundaries/CollisionShape3D2" unique_id=382568810]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("PlaneMesh_b3ddb")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StarshipBoundaries" unique_id=1018107653]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 31, 0)
+shape = SubResource("WorldBoundaryShape3D_nrmyc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StarshipBoundaries/CollisionShape3D3" unique_id=380574357]
+transform = Transform3D(-1, -8.742278e-08, 0, 8.742278e-08, -1, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("PlaneMesh_b3ddb")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="StarshipBoundaries" unique_id=29803880]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -31, 0)
+shape = SubResource("WorldBoundaryShape3D_moahd")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StarshipBoundaries/CollisionShape3D4" unique_id=271890743]
+transform = Transform3D(-1, -8.742278e-08, 0, 8.742278e-08, -1, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("PlaneMesh_b3ddb")

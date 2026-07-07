@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://ynfjwe7n8v7g"
+path="res://.godot/imported/Missile_Silo2.obj-e4ac0e2cfc106a39ad506cbe75f59a63.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Missile_Silo2.obj-e4ac0e2cfc106a39ad506cbe75f59a63.mesh"]
+
+source_file="res://Assets/Models/Buildings/Missile_Silo2.obj"
+dest_files=["res://.godot/imported/Missile_Silo2.obj-e4ac0e2cfc106a39ad506cbe75f59a63.mesh", "res://.godot/imported/Missile_Silo2.obj-e4ac0e2cfc106a39ad506cbe75f59a63.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

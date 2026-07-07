@@ -12,7 +12,7 @@ var build_index = 0
 var launch_index = 0
 
 var buildables = ["space_port","factory","missile_silo","space_radar","bunker"]
-var launchables = ["ship","missile","gravitator"]
+var launchables = ["ship","missile","gravitator","starship"]
 
 var launching = false
 
@@ -22,6 +22,7 @@ signal launch_index_changed
 # We need this to ensure the joystick acts like a "button press" (a flick).
 # Otherwise, holding the stick will swap planets 60 times a second!
 var trigger_was_reset: bool = true
+var launch_was_reset: bool = true
 
 func _ready():
 	if not planet:
@@ -36,7 +37,7 @@ func _ready():
 		print("Planet. Contoller: " +str(player_id))
 		activate_planet(planet)
 		planet.focus(self)
-		planet.technology += 200
+		planet.technology += 1000
 	
 	if hud:
 		build_index_changed.connect(hud.update_build_index)
@@ -58,13 +59,7 @@ func _physics_process(delta):
 	
 	if Input.is_action_just_pressed("p%s_accept" % player_id):
 		if launching:
-			var y = -Input.get_joy_axis(player_id,JOY_AXIS_LEFT_Y)
-			var x = Input.get_joy_axis(player_id,JOY_AXIS_LEFT_X)
-			var vector : Vector3 = Vector3(x,y,0)
-			if vector.length() > 0.3:
-				if planet:
-					planet.launch(launchable,vector,player_id)
-					%TrajectoryVisualizer.launched = true
+			launch()
 		else:
 			planet.add_building(buildable)
 	
@@ -118,7 +113,34 @@ func _physics_process(delta):
 			build_index_changed.emit(build_index)
 			buildable = buildables[build_index]
 			check_launchable()
+	
+	if Input.get_joy_axis(player_id,JOY_AXIS_TRIGGER_RIGHT) > 0.3:
+		if launch_was_reset:
+			launch()
+			launch_was_reset = false
+	else:
+		launch_was_reset = true
+	
+	handle_steering()
 
+
+func launch():
+	var y = -Input.get_joy_axis(player_id,JOY_AXIS_RIGHT_Y)
+	var x = Input.get_joy_axis(player_id,JOY_AXIS_RIGHT_X)
+	var vector : Vector3 = Vector3(x,y,0)
+	if vector.length() > 0.3:
+		if planet:
+			planet.launch(launchable,vector,player_id)
+			%TrajectoryVisualizer.launched = true
+
+func handle_steering():
+	var x = Input.get_joy_axis(player_id,JOY_AXIS_LEFT_X)
+	var y = -Input.get_joy_axis(player_id,JOY_AXIS_LEFT_Y)
+	var vector = Vector3(x,y,0)
+	
+	if vector.length() > 0.3:
+		if planet.has_method("steer"):
+			planet.steer(vector)
 
 func check_launchable():
 	%TrajectoryVisualizer.check_launchable(launchable)
@@ -213,7 +235,7 @@ func handle_directional_selection():
 		trigger_was_reset = false # Force the player to let go of the stick before flicking again
 
 
-func activate_planet(exp_planet : Planet):
+func activate_planet(exp_planet : Node3D):
 	exp_planet.focus(self)
 	
 	print(planet)

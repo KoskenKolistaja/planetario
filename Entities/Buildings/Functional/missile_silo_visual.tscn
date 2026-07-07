@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://par8f2ffrq3o"]
+
+[ext_resource type="Texture2D" uid="uid://c1muh67ekegc4" path="res://Assets/Models/Rocket/Rocket_RocketTexture.png" id="1_6uqva"]
+[ext_resource type="Script" uid="uid://bocw60kwum54h" path="res://Entities/Buildings/Functional/functional_visual.gd" id="1_64ea5"]
+[ext_resource type="ArrayMesh" uid="uid://b3fe0x65uai28" path="res://Assets/Models/Buildings/Missile_Silo.obj" id="2_64ea5"]
+[ext_resource type="ArrayMesh" uid="uid://ynfjwe7n8v7g" path="res://Assets/Models/Buildings/Missile_Silo2.obj" id="4_1sqh7"]
+
+[sub_resource type="Animation" id="Animation_5iy7a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -5.5, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_hovoj"]
+resource_name = "rise"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -5.5, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6uqva"]
+_data = {
+&"RESET": SubResource("Animation_5iy7a"),
+&"rise": SubResource("Animation_hovoj")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1sqh7"]
+albedo_texture = ExtResource("1_6uqva")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dshon"]
+albedo_texture = ExtResource("1_6uqva")
+
+[node name="MissileSiloVisual" type="Node3D" unique_id=800626152]
+script = ExtResource("1_64ea5")
+
+[node name="Pivot" type="Node3D" parent="." unique_id=153691494]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.5, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Pivot" unique_id=198959681]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_6uqva")
+autoplay = &"rise"
+
+[node name="MissileSilo" type="MeshInstance3D" parent="Pivot" unique_id=52816215]
+transform = Transform3D(0.5, 0, 0, 0, 3, 0, 0, 0, 0.5, 0, 0, 0)
+visible = false
+material_override = SubResource("StandardMaterial3D_1sqh7")
+mesh = ExtResource("2_64ea5")
+
+[node name="MissileSilo2" type="MeshInstance3D" parent="Pivot" unique_id=597112627]
+transform = Transform3D(0.6, 0, 0, 0, 2, 0, 0, 0, 0.6, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_dshon")
+mesh = ExtResource("4_1sqh7")

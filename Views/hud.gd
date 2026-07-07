@@ -23,7 +23,6 @@ func update_technology(amount : int):
 	
 	check_availability()
 
-
 #buildables = ["space_port","factory","missile_silo","space_radar","bunker"]
 #launchables = ["ship","missile","gravitator"]
 

@@ -23,9 +23,9 @@ func _ready():
 	%AnimationPlayer.play("build")
 	await get_tree().physics_frame
 	var scene_instance = buildings.pick_random().instantiate()
-	scene_instance.scale.z *= 30
-	scene_instance.scale.x *= 30
-	scene_instance.scale.y *= 15
+	scene_instance.scale.z *= 10
+	scene_instance.scale.x *= 10
+	scene_instance.scale.y *= 5
 	%MeshContainer.add_child(scene_instance)
 
 

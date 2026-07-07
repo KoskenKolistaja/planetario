@@ -40,8 +40,8 @@ func _physics_process(delta):
 		return
 		
 	# 1. Get joystick input to find the launch direction
-	var y = -Input.get_joy_axis(player_id, JOY_AXIS_LEFT_Y)
-	var x = Input.get_joy_axis(player_id, JOY_AXIS_LEFT_X)
+	var y = -Input.get_joy_axis(player_id, JOY_AXIS_RIGHT_Y)
+	var x = Input.get_joy_axis(player_id, JOY_AXIS_RIGHT_X)
 	var input_vector = Vector3(x, y, 0)
 	
 	var direction = Vector3.UP

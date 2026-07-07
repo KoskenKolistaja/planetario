@@ -18,7 +18,7 @@ var origin_planet : Node3D
 
 
 func _ready():
-	await get_tree().create_timer(5.0).timeout
+	await get_tree().create_timer(2.0).timeout
 	fade()
 
 

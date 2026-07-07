@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://1nn3fn4metg3" path="res://Assets/Icons/space-shuttle.png" id="8_41y7y"]
 [ext_resource type="Texture2D" uid="uid://c8tw5o1btdwo0" path="res://Assets/Icons/fallout-shelter.png" id="9_bluv3"]
 [ext_resource type="Texture2D" uid="uid://my4k630kqtk" path="res://Assets/Icons/expand.png" id="10_nq3pv"]
+[ext_resource type="Texture2D" uid="uid://dvjonjj6cfyis" path="res://Assets/Icons/spiky-field.png" id="11_4w301"]
 [ext_resource type="Texture2D" uid="uid://gtshfrhd8blt" path="res://Assets/Icons/Cog.png" id="11_na3rj"]
 [ext_resource type="Texture2D" uid="uid://b1ovgb18qo8la" path="res://Assets/Icons/select.png" id="12_0lofq"]
 
@@ -47,6 +48,7 @@ theme_override_constants/margin_bottom = 30
 
 [node name="Buildables" type="HBoxContainer" parent="MarginContainer" unique_id=112605038]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 size_flags_vertical = 4
 alignment = 1
@@ -298,7 +300,6 @@ vertical_alignment = 1
 
 [node name="Launchables" type="HBoxContainer" parent="MarginContainer" unique_id=1076988878]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 size_flags_vertical = 4
 alignment = 1
@@ -370,6 +371,29 @@ offset_bottom = 25.545044
 grow_horizontal = 2
 grow_vertical = 0
 text = "25$"
+horizontal_alignment = 1
+
+[node name="Starship" type="Button" parent="MarginContainer/Launchables" unique_id=631926860]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+icon = ExtResource("11_4w301")
+expand_icon = true
+
+[node name="Label" type="Label" parent="MarginContainer/Launchables/Starship" unique_id=910272346]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = 2.5449982
+offset_right = 20.0
+offset_bottom = 25.545044
+grow_horizontal = 2
+grow_vertical = 0
+text = "1000$"
 horizontal_alignment = 1
 
 [node name="Container" type="HBoxContainer" parent="MarginContainer" unique_id=876711799]

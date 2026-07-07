@@ -6,6 +6,7 @@
 [ext_resource type="Material" uid="uid://haucukh53bqv" path="res://Assets/Materials/Rocky.tres" id="3_6vn1t"]
 [ext_resource type="PackedScene" uid="uid://c2yb73uaub7fi" path="res://Entities/Ship/ship.tscn" id="4_asytt"]
 [ext_resource type="PackedScene" uid="uid://cc54rvv1tpngh" path="res://Entities/Gravitator/gravitator.tscn" id="5_eqml8"]
+[ext_resource type="PackedScene" uid="uid://dk48tqm7v72wd" path="res://Entities/StarShip/star_ship.tscn" id="6_5e6d8"]
 [ext_resource type="Texture2D" uid="uid://bc0a26kfna5dv" path="res://Assets/kenney_particle-pack/PNG (Transparent)/circle_03.png" id="6_asytt"]
 [ext_resource type="PackedScene" uid="uid://bw6jwpe8ucqhe" path="res://Entities/Buildings/building_1.tscn" id="8_1uqo4"]
 [ext_resource type="Script" uid="uid://bqbhj25baam62" path="res://Entities/Planets/planet_populator.gd" id="9_wjlyk"]
@@ -41,6 +42,7 @@ planet_material = ExtResource("3_6vn1t")
 missile_scene = ExtResource("2_denno")
 ship_scene = ExtResource("4_asytt")
 gravitator_scene = ExtResource("5_eqml8")
+starship_scene = ExtResource("6_5e6d8")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=675476194]
 shape = SubResource("SphereShape3D_71nwq")
@@ -66,7 +68,7 @@ unique_name_in_owner = true
 script = ExtResource("9_wjlyk")
 planet_radius = 3.0
 min_building_distance = 0.6
-building_scale = Vector3(0.3, 0.3, 0.3)
+building_scale = Vector3(0.8, 0.4, 0.8)
 surface_offset = 0.0
 city_center_direction = Vector3(0.5, 0.5, 1)
 

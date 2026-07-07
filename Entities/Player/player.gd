@@ -37,7 +37,7 @@ func _ready():
 		print("Planet. Contoller: " +str(player_id))
 		activate_planet(planet)
 		planet.focus(self)
-		planet.technology += 1000
+		planet.technology += 300
 	
 	if hud:
 		build_index_changed.connect(hud.update_build_index)

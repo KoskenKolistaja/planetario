@@ -24,7 +24,7 @@ var buildings = []
 
 var type = 0
 
-var technology = 200
+var technology = 0
 
 var angle: float
 

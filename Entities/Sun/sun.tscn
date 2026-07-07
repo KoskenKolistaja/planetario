@@ -19,7 +19,7 @@ radius = 3.0
 [node name="Sun" type="StaticBody3D" unique_id=2110935476 groups=["gravitator"]]
 script = ExtResource("1_qodq5")
 
-[node name="Mesh" type="MeshInstance3D" parent="." unique_id=124440077]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=124440077]
 unique_name_in_owner = true
 mesh = SubResource("SphereMesh_y7ngv")
 

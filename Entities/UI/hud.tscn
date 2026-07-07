@@ -1,0 +1,432 @@
+[gd_scene format=3 uid="uid://d2horlhbu1a4h"]
+
+[ext_resource type="Texture2D" uid="uid://besuclc66c6l6" path="res://Assets/Textures/UI/Panel3.png" id="1_gslrh"]
+[ext_resource type="Script" uid="uid://tra0nef88gfi" path="res://Views/hud.gd" id="2_4w301"]
+[ext_resource type="Texture2D" uid="uid://unnwe4llrjcq" path="res://Assets/Icons/control-tower.png" id="3_meta0"]
+[ext_resource type="Texture2D" uid="uid://0obkwqw8k85y" path="res://Assets/Icons/factory.png" id="4_layx2"]
+[ext_resource type="Texture2D" uid="uid://ddh2ki44gntge" path="res://Assets/Icons/missile-launcher.png" id="5_sgqyc"]
+[ext_resource type="Texture2D" uid="uid://bkxdmbnq6a425" path="res://Assets/Icons/radar-dish.png" id="6_73hir"]
+[ext_resource type="Texture2D" uid="uid://dy3j3te65jmne" path="res://Assets/Icons/barracks.png" id="7_xnojc"]
+[ext_resource type="Texture2D" uid="uid://1nn3fn4metg3" path="res://Assets/Icons/space-shuttle.png" id="8_41y7y"]
+[ext_resource type="Texture2D" uid="uid://c8tw5o1btdwo0" path="res://Assets/Icons/fallout-shelter.png" id="9_bluv3"]
+[ext_resource type="Texture2D" uid="uid://my4k630kqtk" path="res://Assets/Icons/expand.png" id="10_nq3pv"]
+[ext_resource type="Texture2D" uid="uid://gtshfrhd8blt" path="res://Assets/Icons/Cog.png" id="11_na3rj"]
+[ext_resource type="Texture2D" uid="uid://b1ovgb18qo8la" path="res://Assets/Icons/select.png" id="12_0lofq"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0ib7o"]
+texture = ExtResource("1_gslrh")
+expand_margin_left = 84.0
+expand_margin_top = 150.0
+expand_margin_right = 84.0
+expand_margin_bottom = 150.0
+
+[node name="Hud1" type="Panel" unique_id=1957944093]
+self_modulate = Color(1, 1, 1, 0.6627451)
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 26.0
+offset_top = -225.0
+offset_right = 400.0
+offset_bottom = -15.0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_0ib7o")
+script = ExtResource("2_4w301")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=374491672]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 30
+
+[node name="Buildables" type="HBoxContainer" parent="MarginContainer" unique_id=112605038]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+alignment = 1
+
+[node name="SpacePort" type="Button" parent="MarginContainer/Buildables" unique_id=1680477020]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+icon = ExtResource("3_meta0")
+expand_icon = true
+
+[node name="Label" type="Label" parent="MarginContainer/Buildables/SpacePort" unique_id=1565587152]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = 2.5449982
+offset_right = 20.0
+offset_bottom = 25.545044
+grow_horizontal = 2
+grow_vertical = 0
+text = "100$"
+horizontal_alignment = 1
+
+[node name="Panel" type="Panel" parent="MarginContainer/Buildables/SpacePort/Label" unique_id=1608433991]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = 2.7299538
+offset_right = 20.0
+offset_bottom = 42.729996
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="SpacePortAmount" type="Label" parent="MarginContainer/Buildables/SpacePort/Label/Panel" unique_id=52138725]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Factory" type="Button" parent="MarginContainer/Buildables" unique_id=1173706300]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+icon = ExtResource("4_layx2")
+expand_icon = true
+
+[node name="Label" type="Label" parent="MarginContainer/Buildables/Factory" unique_id=1678592307]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = 2.5449982
+offset_right = 20.0
+offset_bottom = 25.545044
+grow_horizontal = 2
+grow_vertical = 0
+text = "100$"
+horizontal_alignment = 1
+
+[node name="Panel" type="Panel" parent="MarginContainer/Buildables/Factory/Label" unique_id=849821461]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = 2.7299538
+offset_right = 20.0
+offset_bottom = 42.729996
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="FactoryAmount" type="Label" parent="MarginContainer/Buildables/Factory/Label/Panel" unique_id=198939579]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MissileSilo" type="Button" parent="MarginContainer/Buildables" unique_id=305416534]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+icon = ExtResource("5_sgqyc")
+expand_icon = true
+
+[node name="Label" type="Label" parent="MarginContainer/Buildables/MissileSilo" unique_id=1964035015]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = 2.5449982
+offset_right = 20.0
+offset_bottom = 25.545044
+grow_horizontal = 2
+grow_vertical = 0
+text = "100$"
+horizontal_alignment = 1
+
+[node name="Panel" type="Panel" parent="MarginContainer/Buildables/MissileSilo/Label" unique_id=1709079394]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = 2.7299538
+offset_right = 20.0
+offset_bottom = 42.729996
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="MissileSiloAmount" type="Label" parent="MarginContainer/Buildables/MissileSilo/Label/Panel" unique_id=1078747000]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SpaceRadar" type="Button" parent="MarginContainer/Buildables" unique_id=842151296]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+icon = ExtResource("6_73hir")
+expand_icon = true
+
+[node name="Label" type="Label" parent="MarginContainer/Buildables/SpaceRadar" unique_id=59480354]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = 2.5449982
+offset_right = 20.0
+offset_bottom = 25.545044
+grow_horizontal = 2
+grow_vertical = 0
+text = "100$"
+horizontal_alignment = 1
+
+[node name="Panel" type="Panel" parent="MarginContainer/Buildables/SpaceRadar/Label" unique_id=767345798]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = 2.7299538
+offset_right = 20.0
+offset_bottom = 42.729996
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="SpaceRadarAmount" type="Label" parent="MarginContainer/Buildables/SpaceRadar/Label/Panel" unique_id=1813798569]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Bunker" type="Button" parent="MarginContainer/Buildables" unique_id=923835956]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+icon = ExtResource("7_xnojc")
+expand_icon = true
+
+[node name="Label" type="Label" parent="MarginContainer/Buildables/Bunker" unique_id=890773593]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = 2.5449982
+offset_right = 20.0
+offset_bottom = 25.545044
+grow_horizontal = 2
+grow_vertical = 0
+text = "100$"
+horizontal_alignment = 1
+
+[node name="Panel" type="Panel" parent="MarginContainer/Buildables/Bunker/Label" unique_id=2069910177]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = 2.7299538
+offset_right = 20.0
+offset_bottom = 42.729996
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="BunkerAmount" type="Label" parent="MarginContainer/Buildables/Bunker/Label/Panel" unique_id=220294309]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Launchables" type="HBoxContainer" parent="MarginContainer" unique_id=1076988878]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_vertical = 4
+alignment = 1
+
+[node name="Ship" type="Button" parent="MarginContainer/Launchables" unique_id=1893879187]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+icon = ExtResource("8_41y7y")
+expand_icon = true
+
+[node name="Label" type="Label" parent="MarginContainer/Launchables/Ship" unique_id=1382347651]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = 2.5449982
+offset_right = 20.0
+offset_bottom = 25.545044
+grow_horizontal = 2
+grow_vertical = 0
+text = "50$"
+horizontal_alignment = 1
+
+[node name="Missile" type="Button" parent="MarginContainer/Launchables" unique_id=1147711743]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+icon = ExtResource("9_bluv3")
+expand_icon = true
+
+[node name="Label" type="Label" parent="MarginContainer/Launchables/Missile" unique_id=1736839395]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = 2.5449982
+offset_right = 20.0
+offset_bottom = 25.545044
+grow_horizontal = 2
+grow_vertical = 0
+text = "50$"
+horizontal_alignment = 1
+
+[node name="Gravitator" type="Button" parent="MarginContainer/Launchables" unique_id=842108653]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+icon = ExtResource("10_nq3pv")
+expand_icon = true
+
+[node name="Label" type="Label" parent="MarginContainer/Launchables/Gravitator" unique_id=1370867673]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = 2.5449982
+offset_right = 20.0
+offset_bottom = 25.545044
+grow_horizontal = 2
+grow_vertical = 0
+text = "25$"
+horizontal_alignment = 1
+
+[node name="Container" type="HBoxContainer" parent="MarginContainer" unique_id=876711799]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/Container" unique_id=1576622318]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("11_na3rj")
+expand_mode = 1
+
+[node name="TechnologyLabel" type="Label" parent="MarginContainer/Container" unique_id=1005161164]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "pelle"
+
+[node name="Control" type="Control" parent="MarginContainer" unique_id=1411891070]
+layout_mode = 2
+
+[node name="Cursor" type="TextureRect" parent="MarginContainer/Control" unique_id=458472150]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 0
+offset_right = 70.0
+offset_bottom = 70.0
+texture = ExtResource("12_0lofq")
+expand_mode = 1
+
+[node name="Control2" type="Control" parent="MarginContainer" unique_id=115805020]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Control2" unique_id=706942483]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 20.0
+grow_horizontal = 2
+theme_override_constants/margin_right = 30
+
+[node name="BuildingsTotalAmount" type="Label" parent="MarginContainer/Control2/MarginContainer" unique_id=1145778688]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Buildings:          0/5"
+horizontal_alignment = 2
+
+[node name="PlanetName" type="Label" parent="." unique_id=994544785]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -36.5
+offset_top = -29.545
+offset_right = 36.5
+offset_bottom = -9.545
+grow_horizontal = 2
+text = "PLANET NAME"

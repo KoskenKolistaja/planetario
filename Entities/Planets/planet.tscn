@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://dpftk7wpju0s5"]
+
+[ext_resource type="Script" uid="uid://cxpil0o26w3ir" path="res://Entities/Planets/planet.gd" id="1_6gsgi"]
+[ext_resource type="PackedScene" uid="uid://4d1i8ne7mill" path="res://Entities/Missile/missile.tscn" id="2_denno"]
+[ext_resource type="Texture2D" uid="uid://bflrq7s61oge0" path="res://Assets/Textures/desert_ground_with_rocks_01_1k (1)/desert_ground_with_rocks_01_1k/desert_ground_with_rocks_01_baseColor_1k.png" id="3_1qwtq"]
+[ext_resource type="Material" uid="uid://haucukh53bqv" path="res://Assets/Materials/Rocky.tres" id="3_6vn1t"]
+[ext_resource type="PackedScene" uid="uid://c2yb73uaub7fi" path="res://Entities/Ship/ship.tscn" id="4_asytt"]
+[ext_resource type="PackedScene" uid="uid://cc54rvv1tpngh" path="res://Entities/Gravitator/gravitator.tscn" id="5_eqml8"]
+[ext_resource type="Texture2D" uid="uid://bc0a26kfna5dv" path="res://Assets/kenney_particle-pack/PNG (Transparent)/circle_03.png" id="6_asytt"]
+[ext_resource type="PackedScene" uid="uid://bw6jwpe8ucqhe" path="res://Entities/Buildings/building_1.tscn" id="8_1uqo4"]
+[ext_resource type="Script" uid="uid://bqbhj25baam62" path="res://Entities/Planets/planet_populator.gd" id="9_wjlyk"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_71nwq"]
+radius = 3.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6vn1t"]
+albedo_texture = ExtResource("3_1qwtq")
+uv1_scale = Vector3(3, 3, 3)
+
+[sub_resource type="SphereMesh" id="SphereMesh_6gsgi"]
+material = SubResource("StandardMaterial3D_6vn1t")
+radius = 3.0
+height = 6.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eqml8"]
+resource_local_to_scene = true
+transparency = 1
+shading_mode = 0
+albedo_color = Color(1, 1, 1, 0.13725491)
+albedo_texture = ExtResource("6_asytt")
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_1uqo4"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_eqml8")
+size = Vector2(10, 10)
+
+[node name="Planet" type="AnimatableBody3D" unique_id=1982172163 groups=["planet"]]
+script = ExtResource("1_6gsgi")
+planet_material = ExtResource("3_6vn1t")
+missile_scene = ExtResource("2_denno")
+ship_scene = ExtResource("4_asytt")
+gravitator_scene = ExtResource("5_eqml8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=675476194]
+shape = SubResource("SphereShape3D_71nwq")
+
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=2085206190]
+unique_name_in_owner = true
+mesh = SubResource("SphereMesh_6gsgi")
+
+[node name="Highlight" type="MeshInstance3D" parent="." unique_id=254075724]
+unique_name_in_owner = true
+transform = Transform3D(-6.556708e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, -6.556708e-08, 0, 0, 0)
+visible = false
+mesh = SubResource("QuadMesh_1uqo4")
+
+[node name="Timer" type="Timer" parent="." unique_id=1083436598]
+autostart = true
+
+[node name="Building1" parent="." unique_id=1937264127 instance=ExtResource("8_1uqo4")]
+transform = Transform3D(0.1, 0, 0, 0, -4.371139e-09, -0.1, 0, 0.1, -4.371139e-09, 0, 0, 2)
+
+[node name="PlanetPopulator" type="Node3D" parent="." unique_id=1153884793]
+unique_name_in_owner = true
+script = ExtResource("9_wjlyk")
+planet_radius = 3.0
+min_building_distance = 0.6
+building_scale = Vector3(0.3, 0.3, 0.3)
+surface_offset = 0.0
+city_center_direction = Vector3(0.5, 0.5, 1)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://8u4qgco2jv64"]
+
+[ext_resource type="Material" uid="uid://c8wh60mixp1l5" path="res://Entities/Buildings/BuildingMaterial.tres" id="1_dmbtk"]
+[ext_resource type="ArrayMesh" uid="uid://bidg5gwnh5xc6" path="res://Assets/Models/KenneyCommercial/OBJ format/low-detail-building-m.obj" id="1_vrk0b"]
+
+[node name="Building13" type="MeshInstance3D" unique_id=1937264127]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+material_override = ExtResource("1_dmbtk")
+mesh = ExtResource("1_vrk0b")

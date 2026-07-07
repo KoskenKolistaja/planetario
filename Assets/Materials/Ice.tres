@@ -1,0 +1,20 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cgy1gfeahqk35"]
+
+[ext_resource type="Texture2D" uid="uid://d2u5ubfl2s0pr" path="res://Assets/Textures/snow_01_1k/snow_01_1k/snow_01_color_1k.png" id="1_wjvbu"]
+[ext_resource type="Texture2D" uid="uid://c6on1ap2ueeq2" path="res://Assets/Textures/snow_01_1k/snow_01_1k/snow_01_normal_gl_1k.png" id="2_0p0un"]
+[ext_resource type="Texture2D" uid="uid://cojiwy01p5g2w" path="res://Assets/Textures/snow_01_1k/snow_01_1k/snow_01_ambient_occlusion_1k.png" id="2_w5h0f"]
+[ext_resource type="Texture2D" uid="uid://bfw5axo1w1524" path="res://Assets/Textures/snow_01_1k/snow_01_1k/snow_01_height_1k.png" id="3_w5h0f"]
+[ext_resource type="Texture2D" uid="uid://bhdt3cubljpjw" path="res://Assets/Textures/snow_01_1k/snow_01_1k/snow_01_roughness_1k.png" id="5_wvhds"]
+
+[resource]
+albedo_texture = ExtResource("1_wjvbu")
+roughness_texture = ExtResource("5_wvhds")
+normal_enabled = true
+normal_scale = 2.96
+normal_texture = ExtResource("2_0p0un")
+ao_enabled = true
+ao_light_affect = 1.0
+ao_texture = ExtResource("2_w5h0f")
+heightmap_enabled = true
+heightmap_texture = ExtResource("3_w5h0f")
+uv1_scale = Vector3(3, 3, 3)

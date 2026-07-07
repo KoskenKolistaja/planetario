@@ -1,0 +1,273 @@
+[gd_scene format=3 uid="uid://bgmqjaj3j7ptj"]
+
+[ext_resource type="Script" uid="uid://c878bpa2tdix3" path="res://Entities/Player/player.gd" id="1_3uyv8"]
+[ext_resource type="Script" uid="uid://1ug6dxuhq7ls" path="res://Entities/Planets/trajectory_visualizer.gd" id="2_lu8i8"]
+
+[sub_resource type="Gradient" id="Gradient_mgcjh"]
+offsets = PackedFloat32Array(0.25855514, 0.39543727)
+colors = PackedColorArray(1, 1, 1, 0.6862745, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_asytt"]
+gradient = SubResource("Gradient_mgcjh")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mgcjh"]
+transparency = 1
+shading_mode = 0
+albedo_texture = SubResource("GradientTexture2D_asytt")
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_asytt"]
+material = SubResource("StandardMaterial3D_mgcjh")
+
+[node name="Player" type="Node3D" unique_id=1303389446 node_paths=PackedStringArray("planet", "hud")]
+script = ExtResource("1_3uyv8")
+planet = NodePath("")
+hud = NodePath("")
+
+[node name="TrajectoryVisualizer" type="Node3D" parent="." unique_id=2063921204 node_paths=PackedStringArray("planet")]
+unique_name_in_owner = true
+script = ExtResource("2_lu8i8")
+planet = NodePath("")
+steps_per_mesh = 20
+
+[node name="TrajectoryPoint" type="MeshInstance3D" parent="TrajectoryVisualizer" unique_id=914891489]
+unique_name_in_owner = true
+mesh = SubResource("QuadMesh_asytt")
+
+[node name="TrajectoryPoint2" type="MeshInstance3D" parent="TrajectoryVisualizer" unique_id=1797080661]
+unique_name_in_owner = true
+mesh = SubResource("QuadMesh_asytt")
+
+[node name="TrajectoryPoint3" type="MeshInstance3D" parent="TrajectoryVisualizer" unique_id=1432384725]
+unique_name_in_owner = true
+mesh = SubResource("QuadMesh_asytt")
+
+[node name="TrajectoryPoint4" type="MeshInstance3D" parent="TrajectoryVisualizer" unique_id=625001744]
+unique_name_in_owner = true
+mesh = SubResource("QuadMesh_asytt")
+
+[node name="TrajectoryPoint5" type="MeshInstance3D" parent="TrajectoryVisualizer" unique_id=512919018]
+unique_name_in_owner = true
+mesh = SubResource("QuadMesh_asytt")
+
+[node name="TrajectoryPoint6" type="MeshInstance3D" parent="TrajectoryVisualizer" unique_id=571903410]
+unique_name_in_owner = true
+mesh = SubResource("QuadMesh_asytt")
+
+[node name="TrajectoryPoint7" type="MeshInstance3D" parent="TrajectoryVisualizer" unique_id=485418242]
+unique_name_in_owner = true
+mesh = SubResource("QuadMesh_asytt")
+
+[node name="TrajectoryPoint8" type="MeshInstance3D" parent="TrajectoryVisualizer" unique_id=89458451]
+unique_name_in_owner = true
+mesh = SubResource("QuadMesh_asytt")
+
+[node name="TrajectoryPoint9" type="MeshInstance3D" parent="TrajectoryVisualizer" unique_id=594207299]
+unique_name_in_owner = true
+mesh = SubResource("QuadMesh_asytt")
+
+[node name="TrajectoryPoint10" type="MeshInstance3D" parent="TrajectoryVisualizer" unique_id=1674282737]
+unique_name_in_owner = true
+mesh = SubResource("QuadMesh_asytt")
+
+[node name="TrajectoryPoint11" type="MeshInstance3D" parent="TrajectoryVisualizer" unique_id=582893878]
+unique_name_in_owner = true
+mesh = SubResource("QuadMesh_asytt")
+
+[node name="TrajectoryPoint12" type="MeshInstance3D" parent="TrajectoryVisualizer" unique_id=587075003]
+unique_name_in_owner = true
+mesh = SubResource("QuadMesh_asytt")
+
+[node name="TrajectoryPoint13" type="MeshInstance3D" parent="TrajectoryVisualizer" unique_id=844769670]
+unique_name_in_owner = true
+mesh = SubResource("QuadMesh_asytt")
+
+[node name="TrajectoryPoint14" type="MeshInstance3D" parent="TrajectoryVisualizer" unique_id=1206308003]
+unique_name_in_owner = true
+mesh = SubResource("QuadMesh_asytt")
+
+[node name="TrajectoryPoint15" type="MeshInstance3D" parent="TrajectoryVisualizer" unique_id=1176872194]
+unique_name_in_owner = true
+mesh = SubResource("QuadMesh_asytt")
+
+[node name="TrajectoryPoint16" type="MeshInstance3D" parent="TrajectoryVisualizer" unique_id=918554951]
+unique_name_in_owner = true
+mesh = SubResource("QuadMesh_asytt")
+
+[node name="TrajectoryPoint17" type="MeshInstance3D" parent="TrajectoryVisualizer" unique_id=893930599]
+unique_name_in_owner = true
+mesh = SubResource("QuadMesh_asytt")
+
+[node name="TrajectoryPoint18" type="MeshInstance3D" parent="TrajectoryVisualizer" unique_id=1949354461]
+unique_name_in_owner = true
+mesh = SubResource("QuadMesh_asytt")
+
+[node name="TrajectoryPoint19" type="MeshInstance3D" parent="TrajectoryVisualizer" unique_id=458873197]
+unique_name_in_owner = true
+mesh = SubResource("QuadMesh_asytt")
+
+[node name="TrajectoryPoint20" type="MeshInstance3D" parent="TrajectoryVisualizer" unique_id=156700934]
+unique_name_in_owner = true
+mesh = SubResource("QuadMesh_asytt")
+
+[node name="TrajectoryPoint21" type="MeshInstance3D" parent="TrajectoryVisualizer" unique_id=897593586]
+unique_name_in_owner = true
+mesh = SubResource("QuadMesh_asytt")
+
+[node name="TrajectoryPoint22" type="MeshInstance3D" parent="TrajectoryVisualizer" unique_id=1583049761]
+unique_name_in_owner = true
+mesh = SubResource("QuadMesh_asytt")
+
+[node name="TrajectoryPoint23" type="MeshInstance3D" parent="TrajectoryVisualizer" unique_id=60577689]
+unique_name_in_owner = true
+mesh = SubResource("QuadMesh_asytt")
+
+[node name="TrajectoryPoint24" type="MeshInstance3D" parent="TrajectoryVisualizer" unique_id=87410062]
+unique_name_in_owner = true
+mesh = SubResource("QuadMesh_asytt")
+
+[node name="TrajectoryPoint25" type="MeshInstance3D" parent="TrajectoryVisualizer" unique_id=176536700]
+unique_name_in_owner = true
+mesh = SubResource("QuadMesh_asytt")
+
+[node name="TrajectoryPoint26" type="MeshInstance3D" parent="TrajectoryVisualizer" unique_id=806288712]
+unique_name_in_owner = true
+mesh = SubResource("QuadMesh_asytt")
+
+[node name="TrajectoryPoint27" type="MeshInstance3D" parent="TrajectoryVisualizer" unique_id=1078940599]
+unique_name_in_owner = true
+mesh = SubResource("QuadMesh_asytt")
+
+[node name="TrajectoryPoint28" type="MeshInstance3D" parent="TrajectoryVisualizer" unique_id=1682841530]
+unique_name_in_owner = true
+mesh = SubResource("QuadMesh_asytt")
+
+[node name="TrajectoryPoint29" type="MeshInstance3D" parent="TrajectoryVisualizer" unique_id=1486174230]
+unique_name_in_owner = true
+mesh = SubResource("QuadMesh_asytt")
+
+[node name="TrajectoryPoint30" type="MeshInstance3D" parent="TrajectoryVisualizer" unique_id=658385346]
+unique_name_in_owner = true
+mesh = SubResource("QuadMesh_asytt")
+
+[node name="TrajectoryPoint31" type="MeshInstance3D" parent="TrajectoryVisualizer" unique_id=985107183]
+unique_name_in_owner = true
+mesh = SubResource("QuadMesh_asytt")
+
+[node name="TrajectoryPoint32" type="MeshInstance3D" parent="TrajectoryVisualizer" unique_id=1568060698]
+unique_name_in_owner = true
+mesh = SubResource("QuadMesh_asytt")
+
+[node name="TrajectoryPoint33" type="MeshInstance3D" parent="TrajectoryVisualizer" unique_id=271497776]
+unique_name_in_owner = true
+mesh = SubResource("QuadMesh_asytt")
+
+[node name="TrajectoryPoint34" type="MeshInstance3D" parent="TrajectoryVisualizer" unique_id=1015372941]
+unique_name_in_owner = true
+mesh = SubResource("QuadMesh_asytt")
+
+[node name="TrajectoryPoint35" type="MeshInstance3D" parent="TrajectoryVisualizer" unique_id=39760610]
+unique_name_in_owner = true
+mesh = SubResource("QuadMesh_asytt")
+
+[node name="TrajectoryPoint36" type="MeshInstance3D" parent="TrajectoryVisualizer" unique_id=1142993298]
+unique_name_in_owner = true
+mesh = SubResource("QuadMesh_asytt")
+
+[node name="TrajectoryPoint37" type="MeshInstance3D" parent="TrajectoryVisualizer" unique_id=1344412703]
+unique_name_in_owner = true
+mesh = SubResource("QuadMesh_asytt")
+
+[node name="TrajectoryPoint38" type="MeshInstance3D" parent="TrajectoryVisualizer" unique_id=1585798317]
+unique_name_in_owner = true
+mesh = SubResource("QuadMesh_asytt")
+
+[node name="TrajectoryPoint39" type="MeshInstance3D" parent="TrajectoryVisualizer" unique_id=676573118]
+unique_name_in_owner = true
+mesh = SubResource("QuadMesh_asytt")
+
+[node name="TrajectoryPoint40" type="MeshInstance3D" parent="TrajectoryVisualizer" unique_id=1104494643]
+unique_name_in_owner = true
+mesh = SubResource("QuadMesh_asytt")
+
+[node name="TrajectoryPoint41" type="MeshInstance3D" parent="TrajectoryVisualizer" unique_id=1182392524]
+unique_name_in_owner = true
+mesh = SubResource("QuadMesh_asytt")
+
+[node name="TrajectoryPoint42" type="MeshInstance3D" parent="TrajectoryVisualizer" unique_id=1137245825]
+unique_name_in_owner = true
+mesh = SubResource("QuadMesh_asytt")
+
+[node name="TrajectoryPoint43" type="MeshInstance3D" parent="TrajectoryVisualizer" unique_id=998456578]
+unique_name_in_owner = true
+mesh = SubResource("QuadMesh_asytt")
+
+[node name="TrajectoryPoint44" type="MeshInstance3D" parent="TrajectoryVisualizer" unique_id=253217002]
+unique_name_in_owner = true
+mesh = SubResource("QuadMesh_asytt")
+
+[node name="TrajectoryPoint45" type="MeshInstance3D" parent="TrajectoryVisualizer" unique_id=211855908]
+unique_name_in_owner = true
+mesh = SubResource("QuadMesh_asytt")
+
+[node name="TrajectoryPoint46" type="MeshInstance3D" parent="TrajectoryVisualizer" unique_id=797315654]
+unique_name_in_owner = true
+mesh = SubResource("QuadMesh_asytt")
+
+[node name="TrajectoryPoint47" type="MeshInstance3D" parent="TrajectoryVisualizer" unique_id=1988395828]
+unique_name_in_owner = true
+mesh = SubResource("QuadMesh_asytt")
+
+[node name="TrajectoryPoint48" type="MeshInstance3D" parent="TrajectoryVisualizer" unique_id=1183896885]
+unique_name_in_owner = true
+mesh = SubResource("QuadMesh_asytt")
+
+[node name="TrajectoryPoint49" type="MeshInstance3D" parent="TrajectoryVisualizer" unique_id=315783111]
+unique_name_in_owner = true
+mesh = SubResource("QuadMesh_asytt")
+
+[node name="TrajectoryPoint50" type="MeshInstance3D" parent="TrajectoryVisualizer" unique_id=1615413474]
+unique_name_in_owner = true
+mesh = SubResource("QuadMesh_asytt")
+
+[node name="TrajectoryPoint51" type="MeshInstance3D" parent="TrajectoryVisualizer" unique_id=1899260703]
+unique_name_in_owner = true
+mesh = SubResource("QuadMesh_asytt")
+
+[node name="TrajectoryPoint52" type="MeshInstance3D" parent="TrajectoryVisualizer" unique_id=1738044852]
+unique_name_in_owner = true
+mesh = SubResource("QuadMesh_asytt")
+
+[node name="TrajectoryPoint53" type="MeshInstance3D" parent="TrajectoryVisualizer" unique_id=1147395050]
+unique_name_in_owner = true
+mesh = SubResource("QuadMesh_asytt")
+
+[node name="TrajectoryPoint54" type="MeshInstance3D" parent="TrajectoryVisualizer" unique_id=1648889146]
+unique_name_in_owner = true
+mesh = SubResource("QuadMesh_asytt")
+
+[node name="TrajectoryPoint55" type="MeshInstance3D" parent="TrajectoryVisualizer" unique_id=1890561666]
+unique_name_in_owner = true
+mesh = SubResource("QuadMesh_asytt")
+
+[node name="TrajectoryPoint56" type="MeshInstance3D" parent="TrajectoryVisualizer" unique_id=1322155814]
+unique_name_in_owner = true
+mesh = SubResource("QuadMesh_asytt")
+
+[node name="TrajectoryPoint57" type="MeshInstance3D" parent="TrajectoryVisualizer" unique_id=5644805]
+unique_name_in_owner = true
+mesh = SubResource("QuadMesh_asytt")
+
+[node name="TrajectoryPoint58" type="MeshInstance3D" parent="TrajectoryVisualizer" unique_id=1943717015]
+unique_name_in_owner = true
+mesh = SubResource("QuadMesh_asytt")
+
+[node name="TrajectoryPoint59" type="MeshInstance3D" parent="TrajectoryVisualizer" unique_id=1617253009]
+unique_name_in_owner = true
+mesh = SubResource("QuadMesh_asytt")
+
+[node name="TrajectoryPoint60" type="MeshInstance3D" parent="TrajectoryVisualizer" unique_id=1009306562]
+unique_name_in_owner = true
+mesh = SubResource("QuadMesh_asytt")

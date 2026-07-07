@@ -1,0 +1,115 @@
+[gd_scene format=3 uid="uid://cc54rvv1tpngh"]
+
+[ext_resource type="Script" uid="uid://cq4kafoy5vw2f" path="res://Entities/Gravitator/gravitator.gd" id="1_wcwj2"]
+[ext_resource type="Texture2D" uid="uid://bc0a26kfna5dv" path="res://Assets/kenney_particle-pack/PNG (Transparent)/circle_03.png" id="2_ta7nt"]
+
+[sub_resource type="Curve" id="Curve_ta7nt"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.047619045, 0.051671863), 0.0, 0.0, 0, 0, Vector2(0.4139194, 0.5949848), -2.6525226, -2.6525226, 0, 0, Vector2(0.7482185, 0.026769638), -0.3104022, -0.3104022, 0, 0, Vector2(1, 0), 0.12557508, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="CurveTexture" id="CurveTexture_s3x1j"]
+curve = SubResource("Curve_ta7nt")
+
+[sub_resource type="Curve" id="Curve_s3x1j"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_1ouj3"]
+curve = SubResource("Curve_s3x1j")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wcwj2"]
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_1ouj3")
+alpha_curve = SubResource("CurveTexture_s3x1j")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5g7sd"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.6156863, 0.5764706, 1, 0.2901961)
+albedo_texture = ExtResource("2_ta7nt")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_ta7nt"]
+material = SubResource("StandardMaterial3D_5g7sd")
+size = Vector2(12, 12)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ta7nt"]
+radius = 4.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_ta7nt"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2jp72"]
+resource_local_to_scene = true
+transparency = 1
+emission_enabled = true
+emission = Color(0.18507028, 0.38863948, 0.99674183, 1)
+emission_energy_multiplier = 4.76
+
+[sub_resource type="Animation" id="Animation_ta7nt"]
+resource_name = "Fade"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:surface_material_override/0:albedo_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1.9666667, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_s3x1j"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:surface_material_override/0:albedo_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s3x1j"]
+_data = {
+&"Fade": SubResource("Animation_ta7nt"),
+&"RESET": SubResource("Animation_s3x1j")
+}
+
+[node name="Gravitator" type="Area3D" unique_id=1821328225]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_wcwj2")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=1270610164]
+unique_name_in_owner = true
+lifetime = 4.0
+preprocess = 0.8
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_wcwj2")
+draw_pass_1 = SubResource("QuadMesh_ta7nt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=423267129]
+shape = SubResource("SphereShape3D_ta7nt")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1408382201]
+mesh = SubResource("SphereMesh_ta7nt")
+surface_material_override/0 = SubResource("StandardMaterial3D_2jp72")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1893799113]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_s3x1j")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

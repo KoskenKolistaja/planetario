@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://1vfoxolfxfhw"]
+
+[ext_resource type="Texture2D" uid="uid://rcdyixmthpqe" path="res://Assets/Models/KenneyCommercial/colormap_emission.png" id="1_0rokx"]
+[ext_resource type="Texture2D" uid="uid://bq3paxyj2785u" path="res://Assets/Models/KenneyCommercial/OBJ format/Textures/colormap.png" id="1_lry8a"]
+
+[resource]
+albedo_texture = ExtResource("1_lry8a")
+emission_energy_multiplier = 4.43
+emission_texture = ExtResource("1_0rokx")

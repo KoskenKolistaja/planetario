@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://dvjonjj6cfyis" path="res://Assets/Icons/spiky-field.png" id="11_4w301"]
 [ext_resource type="Texture2D" uid="uid://gtshfrhd8blt" path="res://Assets/Icons/Cog.png" id="11_na3rj"]
 [ext_resource type="Texture2D" uid="uid://b1ovgb18qo8la" path="res://Assets/Icons/select.png" id="12_0lofq"]
+[ext_resource type="Texture2D" uid="uid://bmjn8fd0duca5" path="res://Assets/Icons/spiky3.png" id="12_meta0"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0ib7o"]
 texture = ExtResource("1_gslrh")
@@ -394,6 +395,29 @@ offset_bottom = 25.545044
 grow_horizontal = 2
 grow_vertical = 0
 text = "1000$"
+horizontal_alignment = 1
+
+[node name="Commandship" type="Button" parent="MarginContainer/Launchables" unique_id=849793731]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+icon = ExtResource("12_meta0")
+expand_icon = true
+
+[node name="Label" type="Label" parent="MarginContainer/Launchables/Commandship" unique_id=144429924]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = 2.5449982
+offset_right = 20.0
+offset_bottom = 25.545044
+grow_horizontal = 2
+grow_vertical = 0
+text = "100$"
 horizontal_alignment = 1
 
 [node name="Container" type="HBoxContainer" parent="MarginContainer" unique_id=876711799]

@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 MetaData="*uid://c74lgpjoqp7bq"
 BuildingData="*uid://bmuvgbtkk4h4e"
 PlayerData="*uid://bileanj7pokqw"
+Audio="*uid://g1k5dkrhhfgi"
 
 [global_group]
 
@@ -114,6 +115,7 @@ p1_previous={
 
 [layer_names]
 
+3d_physics/layer_2="Inhabitable"
 3d_physics/layer_3="Pushables"
 3d_physics/layer_4="Starship Boundaries"
 

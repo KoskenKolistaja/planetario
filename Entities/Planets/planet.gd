@@ -7,12 +7,15 @@ extends AnimatableBody3D
 @export var starting_angle: float = 0.0
 @export var clockwise: bool = true
 
+@export var radius : float = 3.0
+
 @export var planet_material : StandardMaterial3D
 
 @export var missile_scene : PackedScene
 @export var ship_scene : PackedScene
 @export var gravitator_scene : PackedScene
 @export var starship_scene : PackedScene
+@export var command_ship_scene : PackedScene
 
 @export var controller_id : int = -1
 
@@ -33,6 +36,8 @@ var previous_position: Vector3
 
 var visualization_size = 10
 
+var is_planet = true
+
 signal technology_changed
 signal buildings_changed
 signal trajectory_changed
@@ -50,6 +55,23 @@ func _ready():
 	if controller_id > -1:
 		var mat : StandardMaterial3D = %Highlight.get_active_material(0)
 		mat.albedo_color = PlayerData.colors[controller_id]
+	
+	set_radius()
+
+
+func set_radius():
+	var collision : CollisionShape3D = %CollisionShape3D
+	var sphere : SphereShape3D = collision.shape
+	sphere.radius = radius
+	var mesh : MeshInstance3D = %Mesh
+	var sphere_mesh : SphereMesh = mesh.mesh
+	sphere_mesh.radius = radius
+	sphere_mesh.height = radius * 2
+	%PlanetPopulator.planet_radius = radius
+	var highlight_mesh : MeshInstance3D = %Highlight
+	var quad : QuadMesh = highlight_mesh.mesh
+	quad.size = Vector2(radius*3,radius*3)
+
 
 func add_building(building_name):
 	print("ADD CALLED")
@@ -168,6 +190,7 @@ func explode():
 	if is_instance_valid(controller):
 		controller.force_change_planet(self)
 	check_population(technology)
+	%PlanetPopulator.update_buildings(buildings)
 
 func launch(launched_item,vector,player_id):
 	if launched_item == "missile":
@@ -178,6 +201,8 @@ func launch(launched_item,vector,player_id):
 		spawn_gravitator(vector,player_id)
 	if launched_item == "starship":
 		spawn_starship(vector,player_id)
+	if launched_item == "command_ship":
+		spawn_command_ship(vector,player_id)
 
 func spawn_missile(vector):
 	if not buildings.has("missile_silo"):
@@ -201,7 +226,7 @@ func spawn_missile(vector):
 	missile_instance.rotation_degrees.z = rad_to_deg(atan2(vector.y,vector.x)) - 90
 	
 	world.add_child(missile_instance)
-	missile_instance.global_position = self.global_position + (direction * 4)
+	missile_instance.global_position = self.global_position + (direction * (radius+1))
 	missile_instance.set_velocity(linear_velocity)
 	
 	
@@ -229,7 +254,7 @@ func spawn_ship(vector,player_id):
 	ship_instance.origin_planet = self
 	
 	world.add_child(ship_instance)
-	ship_instance.global_position = self.global_position + (direction * 4)
+	ship_instance.global_position = self.global_position + (direction * (radius+1))
 	ship_instance.set_velocity(linear_velocity)
 
 func spawn_gravitator(vector: Vector3, player_id):
@@ -250,7 +275,7 @@ func spawn_gravitator(vector: Vector3, player_id):
 	gravitator_instance.player_id = player_id
 
 	world.add_child(gravitator_instance)
-	gravitator_instance.global_position = global_position + (direction * 4)
+	gravitator_instance.global_position = global_position + (direction * (radius+1))
 	gravitator_instance.set_velocity(linear_velocity)
 
 func spawn_starship(vector: Vector3, player_id):
@@ -272,17 +297,35 @@ func spawn_starship(vector: Vector3, player_id):
 	world.add_child(starship_instance)
 	starship_instance.global_position = global_position + (direction * 8)
 
-func inhabit(player_id):
+func spawn_command_ship(vector: Vector3, player_id):
+	if technology < MetaData.command_ship_price:
+		return
+	
+	technology -= MetaData.command_ship_price
+	technology_changed.emit(technology)
+
+	var direction: Vector3 = Vector3.UP
+	if vector.length() > 0.1:
+		direction = vector.normalized()
+	
+	var command_ship_instance: Node3D = command_ship_scene.instantiate()
+	var world = get_tree().get_first_node_in_group("world")
+	
+	command_ship_instance.controller_id = player_id
+	
+	world.add_child(command_ship_instance)
+	command_ship_instance.global_position = global_position + (direction * 8)
+
+func inhabit(player_id,exp_technology : int = 50):
 	if controller_id < 0:
 		controller_id = player_id
 		print("PLANET INHABITATED. NEW ID: " + str(controller_id))
 	elif controller_id == player_id:
-		technology += 50
+		technology += exp_technology
 		print("PLANET GOT A PACKAGE OF TECHNOLOGY. NEW AMOUNT: " + str(technology))
 		technology_changed.emit(technology)
 	else:
 		return
-	
 
 
 

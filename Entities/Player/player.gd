@@ -5,14 +5,14 @@ extends Node3D
 
 @export var hud : Control
 
-var launchable = "missile"
+var launchable = "ship"
 var buildable = "space_port"
 
 var build_index = 0
 var launch_index = 0
 
 var buildables = ["space_port","factory","missile_silo","space_radar","bunker"]
-var launchables = ["ship","missile","gravitator","starship"]
+var launchables = ["ship","missile","gravitator","starship","command_ship"]
 
 var launching = false
 
@@ -131,7 +131,6 @@ func launch():
 	if vector.length() > 0.3:
 		if planet:
 			planet.launch(launchable,vector,player_id)
-			%TrajectoryVisualizer.launched = true
 
 func handle_steering():
 	var x = Input.get_joy_axis(player_id,JOY_AXIS_LEFT_X)
@@ -149,6 +148,8 @@ func force_change_planet(caller_planet):
 	if planet == caller_planet:
 		next_planet()
 
+
+
 # --- HELPER FUNCTION ---
 func get_own_planets() -> Array:
 	var all_planets = get_tree().get_nodes_in_group("planet")
@@ -157,6 +158,25 @@ func get_own_planets() -> Array:
 		if "controller_id" in p and p.controller_id == player_id:
 			own.append(p)
 	return own
+
+
+
+func change_to_closest_planet(exp_position):
+	var own_planets: Array = get_own_planets()
+	
+	if own_planets.is_empty():
+		return
+	
+	var closest = own_planets[0]
+	var closest_distance = closest.global_position.distance_squared_to(exp_position)
+	
+	for p in own_planets:
+		var current_distance = p.global_position.distance_squared_to(exp_position)
+		if current_distance < closest_distance:
+			closest = p
+			closest_distance = current_distance
+	
+	activate_planet(closest)
 
 
 # --- BUTTON CYCLING ---
@@ -255,7 +275,6 @@ func activate_planet(exp_planet : Node3D):
 	planet = exp_planet # Now we safely overwrite the active planet
 	
 	if hud:
-		print("HUD FOUND")
 		# 2. CONNECT the new planet (checking first to be safe)
 		if not planet.technology_changed.is_connected(hud.update_technology):
 			planet.technology_changed.connect(hud.update_technology)

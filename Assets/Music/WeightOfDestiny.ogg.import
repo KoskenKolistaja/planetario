@@ -3,15 +3,16 @@
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
 uid="uid://brcyi86csx2a"
-valid=false
+path="res://.godot/imported/WeightOfDestiny.ogg-04ad0ca6bc5a85bf495144c78af3658e.oggvorbisstr"
 
 [deps]
 
 source_file="res://Assets/Music/WeightOfDestiny.ogg"
+dest_files=["res://.godot/imported/WeightOfDestiny.ogg-04ad0ca6bc5a85bf495144c78af3658e.oggvorbisstr"]
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

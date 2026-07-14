@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://g1k5dkrhhfgi"]
+
+[ext_resource type="AudioStream" uid="uid://brcyi86csx2a" path="res://Assets/Music/WeightOfDestiny.ogg" id="1_1lysu"]
+
+[node name="Audio" type="Node" unique_id=1695753000]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1684792960]
+stream = ExtResource("1_1lysu")
+autoplay = true

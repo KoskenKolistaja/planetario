@@ -1,7 +1,16 @@
 # Planet Populator
 extends Node3D
 
-@export var planet_radius: float = 50.0
+# Update your export variable to include a setter:
+@export var planet_radius: float = 50.0:
+	set(value):
+		planet_radius = value
+		if is_node_ready():
+			_generate_hemisphere_grid()
+			set_max_buildings()
+
+var max_buildings = 40
+
 @export var min_building_distance: float = 5.0
 @export var building_scale: Vector3 = Vector3(0.5, 0.1, 0.5)
 @export var surface_offset: float = 0.05 
@@ -41,9 +50,13 @@ var spawned_2x2_buildings: Array[Dictionary] = [] # Stores {"type": String, "nod
 
 func _ready() -> void:
 	randomize()
-	_generate_hemisphere_grid()
+	#_generate_hemisphere_grid()
 	var x = randf_range(-0.5, -0.2) if randf() < 0.5 else randf_range(0.2, 0.5)
 	city_center_direction = Vector3(x, randf_range(0.2, 0.5), 1)
+
+func set_max_buildings():
+	max_buildings *= planet_radius
+
 
 ## Calculates a strictly positive-Z grid and registers it to our Master Grid System
 func _generate_hemisphere_grid() -> void:
@@ -137,7 +150,7 @@ func delete_building(building_name: String) -> void:
 # ==========================================
 
 func check_population(target_population: int) -> void:
-	target_population = clamp(target_population, 0, 120)
+	target_population = clamp(target_population, 0, max_buildings)
 	var current_population = spawned_1x1_buildings.size()
 	
 	if current_population < target_population:
@@ -162,7 +175,9 @@ func _build_new_structure() -> void:
 	var new_building: Node3D = scene_to_spawn.instantiate()
 	
 	add_child(new_building)
-	new_building.position = spawn_pos + (normal * surface_offset)
+	
+	# FIX: Explicitly use the live planet_radius instead of the cached spawn_pos magnitude
+	new_building.position = (normal * planet_radius) + (normal * surface_offset)
 	
 	var up_dir = normal
 	var guide_dir = Vector3.UP 

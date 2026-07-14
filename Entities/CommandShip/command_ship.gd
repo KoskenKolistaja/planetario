@@ -15,9 +15,9 @@ extends CharacterBody3D
 
 var buildings = []
 
-var radius = 2.5
+var radius = 1
 
-var technology = 500
+var technology = 0
 
 var angle: float
 
@@ -48,6 +48,7 @@ func _ready():
 		mat.albedo_color = PlayerData.colors[controller_id]
 
 func add_building(building_name):
+	return
 	var is_radar = false
 	match building_name:
 		"space_port":
@@ -95,15 +96,7 @@ func get_building_amount(list,item_name) -> int:
 
 
 func delete_building(building_name):
-	print("DELETING...")
-	print(building_name)
-	print(buildings)
-	if buildings.has(building_name):
-		buildings.erase(building_name)
-		buildings_changed.emit(buildings)
-		print("SUCCEEDED DELETING...")
-		if controller:
-			controller.update_visualization()
+	pass
 
 func focus(exp):
 	%Highlight.show()
@@ -111,7 +104,7 @@ func focus(exp):
 	if controller_id > -1:
 		var mat : StandardMaterial3D = %Highlight.get_active_material(0)
 		mat.albedo_color = PlayerData.colors[controller_id]
-		mat.albedo_color.a = 0.3
+		mat.albedo_color.a = 0.05
 
 func lose_focus():
 	%Highlight.hide()
@@ -120,7 +113,7 @@ func lose_focus():
 func _physics_process(delta):
 	linear_velocity = velocity
 	move_and_slide()
-	velocity = velocity.move_toward(Vector3.ZERO,0.01)
+	velocity = velocity.move_toward(Vector3.ZERO,0.02)
 	
 	if velocity.length() > 0.0:
 		var target_angle = atan2(velocity.y, velocity.x) - PI / 2
@@ -141,7 +134,8 @@ func _physics_process(delta):
 
 
 func steer(exp_velocity : Vector3):
-	velocity = velocity.move_toward(exp_velocity.limit_length(0.8),0.02)
+	exp_velocity *= 3.0
+	velocity = velocity.move_toward(exp_velocity.limit_length(max_speed),0.04)
 
 
 func inhabit(player_id):
@@ -170,14 +164,7 @@ func explode():
 	queue_free()
 
 func launch(launched_item,vector,player_id):
-	if launched_item == "missile":
-		spawn_missile(vector)
-	if launched_item == "ship":
-		spawn_ship(vector,player_id)
-	if launched_item == "gravitator":
-		spawn_gravitator(vector,player_id)
-	else:
-		return
+	pass
 
 func spawn_missile(vector):
 	if not buildings.has("missile_silo"):
@@ -300,3 +287,14 @@ func check_population(amount):
 		from_buildings += 100
 	
 	#%PlanetPopulator.check_population(int((amount + from_buildings) * 0.05))
+
+
+func _on_area_3d_body_entered(body):
+	if body.has_method("inhabit") and controller_id != null:
+		body.inhabit(controller_id,(50 + technology))
+		if controller:
+			if "is_planet" in body:
+				controller.activate_planet(body)
+			else:
+				controller.change_to_closest_planet(self.global_position)
+		queue_free()

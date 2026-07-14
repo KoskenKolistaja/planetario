@@ -118,7 +118,7 @@ material = SubResource("StandardMaterial3D_ihws6")
 size = Vector2(8, 8)
 
 [node name="StarShip" type="CharacterBody3D" unique_id=1776842024 groups=["planet"]]
-collision_layer = 9
+collision_layer = 11
 collision_mask = 9
 axis_lock_linear_z = true
 script = ExtResource("1_xnmt4")

@@ -20,7 +20,7 @@ var visualization_size = 10
 
 var gravitable = true
 
-var launched = false
+#var launched = false
 
 func _ready():
 	# Gather all the child meshes to use as trajectory points
@@ -54,22 +54,21 @@ func _physics_process(delta):
 	for m in trajectory_meshes: m.visible = false
 	
 	# Only show the trajectory if the player is actually aiming
-	if input_vector.length() > 0.3 and not launched:
+	if input_vector.length() > 0.3:
 		var index = 0
 		direction = input_vector.normalized()
 		for i in vis_size:
 			trajectory_meshes[index].visible = true
 			index += 1
-	elif launched and input_vector.length() > 0.3:
+	elif input_vector.length() > 0.3:
 		for m in trajectory_meshes: m.visible = false
 		return
 	else:
-		launched = false
 		for m in trajectory_meshes: m.visible = false
 		return
 		
 	# 2. Setup the initial state exactly like spawn_missile() does
-	var sim_pos = planet.global_position + (direction * 4.0)
+	var sim_pos = planet.global_position + (direction * (planet.radius + 1))
 	var sim_vel = planet.linear_velocity + (direction * missile_speed)
 	
 	# At launch, the missile's forward direction (basis.y) equals the launch direction
@@ -136,4 +135,3 @@ func check_launchable(exp):
 		gravitable = true
 		missile_speed = 1.0
 	
-	launched = false

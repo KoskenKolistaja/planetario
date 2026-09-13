@@ -1,4 +1,5 @@
 extends AnimatableBody3D
+class_name Planet
 
 @export var orbit_point: Node3D
 @export var orbit_radius: float = 10.0

@@ -25,6 +25,7 @@ var trigger_was_reset: bool = true
 var launch_was_reset: bool = true
 
 func _ready():
+	await get_tree().create_timer(0.01).timeout
 	if not planet:
 		print("No planet...")
 		var all_planets = get_tree().get_nodes_in_group("planet")
@@ -45,10 +46,10 @@ func _ready():
 
 func _physics_process(delta):
 	# 1. Bumper/Button cycling
-	if Input.is_action_just_pressed("p%s_next" % player_id):
-		next_planet()
-	if Input.is_action_just_pressed("p%s_previous" % player_id):
-		previous_planet()
+	#if Input.is_action_just_pressed("p%s_next" % player_id):
+		#next_planet()
+	#if Input.is_action_just_pressed("p%s_previous" % player_id):
+		#previous_planet()
 		
 	# 2. Joystick directional snapping
 	

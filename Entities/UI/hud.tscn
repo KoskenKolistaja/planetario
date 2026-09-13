@@ -23,14 +23,15 @@ expand_margin_right = 84.0
 expand_margin_bottom = 150.0
 
 [node name="Hud1" type="Panel" unique_id=1957944093]
-self_modulate = Color(1, 1, 1, 0.6627451)
+modulate = Color(1, 1, 1, 0.8862745)
+self_modulate = Color(1, 1, 1, 0.13333334)
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 26.0
 offset_top = -225.0
 offset_right = 400.0
-offset_bottom = -15.0
+offset_bottom = -79.0
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxTexture_0ib7o")
 script = ExtResource("2_4w301")
@@ -42,10 +43,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 30
 
 [node name="Buildables" type="HBoxContainer" parent="MarginContainer" unique_id=112605038]
 unique_name_in_owner = true
@@ -426,7 +423,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/Container" unique_id=1576622318]
-custom_minimum_size = Vector2(50, 50)
+custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 texture = ExtResource("11_na3rj")
 expand_mode = 1
@@ -473,8 +470,8 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -36.5
-offset_top = -29.545
+offset_top = -47.0
 offset_right = 36.5
-offset_bottom = -9.545
+offset_bottom = -27.0
 grow_horizontal = 2
 text = "PLANET NAME"

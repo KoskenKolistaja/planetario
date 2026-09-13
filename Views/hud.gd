@@ -16,6 +16,7 @@ func _ready():
 	await get_tree().physics_frame
 	%Cursor.global_position = %Buildables.get_child(0).global_position
 	self.self_modulate = PlayerData.colors[player_id]
+	self.self_modulate.a = 0.2
 
 func update_technology(amount : int):
 	%TechnologyLabel.text = str(amount)
